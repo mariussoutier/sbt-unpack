@@ -9,7 +9,10 @@ and packaged into an auto plugin.
 
 Add this to `plugins.sbt`:
 
-`addSbtPlugin("com.mariussoutier.sbt" % "sbt-unpack" % "0.9.0")`
+```
+resolvers += Resolver.bintrayIvyRepo("mariussoutier", "sbt-plugins")
+addSbtPlugin("com.mariussoutier.sbt" % "sbt-unpack" % "0.9.4")
+```
 
 ## Keys
 
