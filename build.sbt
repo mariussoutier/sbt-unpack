@@ -10,8 +10,5 @@ sbtPlugin := true
 crossSbtVersions := Seq("0.13.16", "1.0.2")
 
 publishMavenStyle := false
-//bintrayOrganization := Some("sbt")
 bintrayOrganization in bintray := None
 bintrayRepository := "sbt-plugins"
-//bintrayPackage := "sbt-release"
-//bintrayReleaseOnPublish := false
