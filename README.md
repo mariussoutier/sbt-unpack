@@ -18,7 +18,7 @@ addSbtPlugin("com.mariussoutier.sbt" % "sbt-unpack" % "0.9.4")
 
 * `dependenciesJarDirectory` - Location of the unpacked dependency JARs
 * `dependencyFilter` - Which dependencies to unpack
-* `fileExcludeFilter` - Files that should be excluded while unpacking JARs
+* `fileExcludeFilter` - Files inside the JARs that should be excluded while unpacking
 
 ## Usage
 

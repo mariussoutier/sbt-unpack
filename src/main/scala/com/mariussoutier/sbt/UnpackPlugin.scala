@@ -13,7 +13,7 @@ object UnpackPlugin extends AutoPlugin {
 
   def unpack(target: File, f: File, log: Logger, excludes: NameFilter): Set[java.io.File] = {
     log.info("unpacking " + f.getName)
-    if (!f.isDirectory) sbt.IO.unzip(f, target, excludes)
+    if (!f.isDirectory) sbt.IO.unzip(f, target, (name: String) => !excludes.accept(name))
     else Set.empty
   }
 
