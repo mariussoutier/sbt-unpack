@@ -10,15 +10,8 @@ and packaged into an auto plugin.
 Add this to `plugins.sbt`:
 
 ```
-resolvers += Resolver.bintrayIvyRepo("mariussoutier", "sbt-plugins")
-addSbtPlugin("com.mariussoutier.sbt" % "sbt-unpack" % "0.9.4")
+addSbtPlugin("com.mariussoutier.sbt" % "sbt-unpack" % "0.9.5")
 ```
-
-## Keys
-
-* `dependenciesJarDirectory` - Location of the unpacked dependency JARs
-* `dependencyFilter` - Which dependencies to unpack
-* `fileExcludeFilter` - Files inside the JARs that should be excluded while unpacking
 
 ## Usage
 
@@ -33,5 +26,24 @@ lazy val root = project(...)
 Then run `unpackJars` manually or execute it automatically by adding to a generator, for example:
 
 ```scala
+import com.mariussoutier.sbt.UnpackKeys
 sourceGenerators in Compile += Def.sequential(UnpackKeys.unpackJars, ...)
+```
+
+## Configuration
+
+| Key                         | Description                                                   |
+| --------------------------- | ------------------------------------------------------------- |
+| `dependenciesJarDirectory`  | Location of the unpacked dependency JARs                      | 
+| `dependencyFilter`          | Which dependencies to unpack                                  | 
+| `fileExcludeFilter`         | Files inside the JARs that should be excluded while unpacking |
+
+Example:
+
+```scala
+import com.mariussoutier.sbt.UnpackKeys
+import NameFilter._
+.settings(
+  UnpackKeys.dependencyFilter := { (fileName: String) => fileName.startsWith("example-") },
+)
 ```
