@@ -27,7 +27,10 @@ Then run `unpackJars` manually or execute it automatically by adding to a genera
 
 ```scala
 import com.mariussoutier.sbt.UnpackKeys
-sourceGenerators in Compile += Def.sequential(UnpackKeys.unpackJars, ...)
+// Unpacks whenever you compile
+sourceGenerators in Compile += UnpackKeys.unpackJars
+// Or if you want to execute another task after unpacking
+sourceGenerators in Compile += Def.sequential(UnpackKeys.unpackJars, ...).taskValue
 ```
 
 ## Configuration
